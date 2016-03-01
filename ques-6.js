@@ -30,8 +30,18 @@
     console.log(merge([12,9,10,1,3],1,2,4));
 
     function mergeSort(ary,p,r){
-        // TODO:完成实现
+        if(p === r){
+            return;
+        }
+
+        var middle = Math.floor((p + r)/2);
+        mergeSort(ary, p, middle);
+        mergeSort(ary, middle + 1, r);
+        merge(ary, p, middle, r);
+
+        return ary;
     }
+
     var ary = [2,5,3,1,4,6,8,9,7,10,23,12,7],
         len = ary.length;
     console.log(mergeSort(ary,0,len-1)); //[1, 2, 3, 4, 5, 6, 7, 7, 8, 9, 10, 12, 23]
